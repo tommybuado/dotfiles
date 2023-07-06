@@ -9,6 +9,9 @@ export PATH="$HOME/.local/bin:$PATH"
 # graphics
 export MESA_LOADER_DRIVER_OVERRIDE=iris
 
+# set default uri for libvirt
+export LIBVIRT_DEFAULT_URI="qemu:///session"
+
 # enable built-in vi command line editor
 set -o vi
 
