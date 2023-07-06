@@ -1,0 +1,5 @@
+Section "Device"
+	Identifier "Intel Corporation Skylake GT2 [HD Graphics 520] (rev 07)"
+	Driver     "intel"
+	Option     "TearFree" "true"
+EndSection
