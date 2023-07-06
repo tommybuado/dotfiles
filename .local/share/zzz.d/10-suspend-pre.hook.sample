@@ -1,0 +1,8 @@
+#!/bin/sh
+ZZZ_STAGE=$1
+ZZZ_MODE=$2
+
+if [ "$ZZZ_STAGE" = "pre" ] && [ "$ZZZ_MODE" = "suspend" ]; then
+	DISPLAY=:0 su tommy -c /usr/bin/slock &
+	sleep 2
+fi
