@@ -1,0 +1,8 @@
+# Power Supply - Adapter
+KERNEL=="AC" SUBSYSTEM=="power_supply", ATTR{online}=="0", ENV{DISPLAY}=":0", \
+	ENV{XAUTHORITY}="/home/tommy/.Xauthority", \
+	RUN+="/bin/su tommy -c /home/tommy/.local/bin/power-supply.sh"
+
+KERNEL=="AC" SUBSYSTEM=="power_supply", ATTR{online}=="1", ENV{DISPLAY}=":0", \
+	ENV{XAUTHORITY}="/home/tommy/.Xauthority", \
+	RUN+="/bin/su tommy -c /home/tommy/.local/bin/power-supply.sh"
