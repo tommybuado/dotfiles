@@ -20,3 +20,8 @@ fi
 
 # shell prompt and aliases
 [ -f "$HOME/.ashrc" ] && export ENV="$HOME/.ashrc"
+
+# run X11 after login automatically
+if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
+	exec startx -- vt1 &> /dev/null
+fi
