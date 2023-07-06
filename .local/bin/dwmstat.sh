@@ -36,11 +36,66 @@ print_connection () {
 	fi
 }
 
+print_battery () {
+	CAPACITY="$(cat /sys/class/power_supply/$1/capacity)"
+	STATUS="$(cat /sys/class/power_supply/$1/status)"
+
+	if [ "$STATUS" = "Full" ]; then
+		echo "^c#80ff00^^d^ $CAPACITY%"
+		exit 0
+	fi
+
+	if [ "$STATUS" = "Charging" ]; then
+		echo "^c#ffba68^^d^ $CAPACITY%"
+		exit 0
+	fi
+
+	if [ "$STATUS" = "Not charging" ]; then
+		echo "^c#7f7f7f^^d^ $CAPACITY%"
+		exit 0
+	fi
+
+	if [ "$CAPACITY" -gt 95 ]; then
+		if [ "$STATUS" = "Discharging" ]; then
+			echo "^c#80ff00^^d^ $CAPACITY%"
+			exit 0
+		fi
+	elif [ "$CAPACITY" -gt 75 ]; then
+		if [ "$STATUS" = "Discharging" ]; then
+			echo "^c#80ff00^^d^ $CAPACITY%"
+			exit 0
+		fi
+	elif [ "$CAPACITY" -gt 50 ]; then
+		if [ "$STATUS" = "Discharging" ]; then
+			echo "^c#ffba68^^d^ $CAPACITY%"
+			exit 0
+		fi
+	elif [ "$CAPACITY" -gt 25 ]; then
+		if [ "$STATUS" = "Discharging" ]; then
+			echo "^c#ffba68^^d^ $CAPACITY%"
+			exit 0
+		fi
+	elif [ "$CAPACITY" -gt 10 ]; then
+		if [ "$STATUS" = "Discharging" ]; then
+			echo "^c#ff0090^^d^ $CAPACITY%"
+			exit 0
+		fi
+	else
+		if [ "$STATUS" = "Discharging" ]; then
+			echo "^c#ff0090^^d^ $CAPACITY%"
+			exit 0
+		fi
+	fi
+}
+
 print_date () {
 	echo "^c#bb88dd^^d^ $(date '+%a %b %d %I:%M %p')"
 }
 
 while true; do
-	xsetroot -name " $(print_weather)  $(print_connection)  $(print_date) "
+	STATUSES=" $(print_weather)  $(print_connection)\
+		$(print_battery BAT1)  $(print_battery BAT0)  $(print_date) "
+
+	xsetroot -name "$STATUSES"
 	sleep 1
 done
