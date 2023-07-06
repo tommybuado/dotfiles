@@ -220,3 +220,18 @@ foreground = "#ffffff"
 timeout = 0
 # Icon for notifications with critical urgency, uncomment to enable
 #default_icon = /path/to/icon
+#
+[speaker]
+script = speaker.sh
+highlight = "#5f5fee"
+timeout = 2
+
+[microphone]
+script = microphone.sh
+highlight = "#5f5fee"
+timeout = 2
+
+[brightness]
+script = brightness.sh
+highlight = "#5f5fee"
+timeout = 2
