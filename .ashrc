@@ -1,0 +1,26 @@
+# shell prompt
+export PROMPT="\u\[\e[1;37m\]@\h \[\e[1;32m\]\W\[\e[1;33m\]"
+
+_git_ps1 () {
+	git branch 2> /dev/null | \
+		sed -e "/^[^*]/d" \
+		-e "s/* \(.*\)/ (\1)/"
+}
+
+if [ "$(id -u)" -eq 1000 ]; then
+	export PS1="\[\e[1;34m\]\$PROMPT\$(_git_ps1) \[\e[1;37m\]\$ \[\e[0m\]"
+else
+	export PS1="\[\e[1;31m\]\$PROMPT \[\e[1;31m\]\# \[\e[0m\]"
+fi
+
+# shell aliases
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+
+alias la="ls -a"
+alias lh="ls -lh"
+alias ll="ls -l"
+
+# enable interactivity
+alias cp="cp -i"
+alias mv="mv -i"
+alias rm="rm -i"
