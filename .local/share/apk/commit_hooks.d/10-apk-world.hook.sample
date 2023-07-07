@@ -1,0 +1,11 @@
+#!/bin/sh
+APK_COMMIT=$1
+
+if [ "$APK_COMMIT" = "post-commit" ]; then
+	cmp /etc/apk/world /home/tommy/.local/share/apk/world -s > /dev/null
+	if [ "$?" -ne 0 ]; then
+		echo "==> apk: copying /etc/apk/world"
+		su tommy -c "/bin/cat /etc/apk/world \
+			> /home/tommy/.local/share/apk/world"
+	fi
+fi
