@@ -36,6 +36,23 @@ print_connection () {
 	fi
 }
 
+print_mail () {
+	MESSAGES=0
+
+	MAILBOXES="tommybuado@gmail.com penncycount@gmail.com"
+	for mail in $MAILBOXES; do
+		MESSAGE="$(ls $HOME/.local/share/mail/$mail/INBOX/new | wc -l)"
+		MESSAGES="$(($MESSAGES + $MESSAGE))"
+	done
+
+	if [ "$MESSAGES" -ne 0 ]; then
+		echo "^c#ff0090^^d^ $MESSAGES"
+		exit 0
+	fi
+
+	echo "^c#d0d0d0^^d^ $MESSAGES"
+}
+
 print_battery () {
 	CAPACITY="$(cat /sys/class/power_supply/$1/capacity)"
 	STATUS="$(cat /sys/class/power_supply/$1/status)"
@@ -93,7 +110,7 @@ print_date () {
 }
 
 while true; do
-	STATUSES=" $(print_weather)  $(print_connection)\
+	STATUSES=" $(print_weather)  $(print_connection)  $(print_mail)\
 		$(print_battery BAT1)  $(print_battery BAT0)  $(print_date) "
 
 	xsetroot -name "$STATUSES"
