@@ -6,8 +6,9 @@ export GOPATH="$HOME/.local/lib/go"
 export PATH="$GOPATH/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
-# notmuch
 export NOTMUCH_CONFIG="$HOME/.config/notmuch/config"
+export GNUPGHOME="$HOME/.config/gnupg"
+export PASSWORD_STORE_DIR="$HOME/.config/password-store"
 
 # tasks
 export TASKDATA="$HOME/.local/share/task"
