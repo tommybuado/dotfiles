@@ -1,0 +1,26 @@
+# general settings
+defaults
+auth           on
+tls            on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+
+# tommybuado@gmail.com account
+account      tommybuado@gmail.com
+host         smtp.gmail.com
+port         465
+tls_starttls off
+from         tommybuado@gmail.com
+user         tommybuado
+passwordeval "awk 'NR==1 {print $1}' ~/.config/password.auth"
+
+# penncycount@gmail.com account
+account      penncycount@gmail.com
+host         smtp.gmail.com
+port         465
+tls_starttls off
+from         penncycount@gmail.com
+user         penncycount
+passwordeval "awk 'NR==2 {print $1}' ~/.config/password.auth"
+
+# default account
+account default : tommybuado@gmail.com
