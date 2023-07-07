@@ -1,0 +1,23 @@
+# headers
+color hdrdefault brightwhite   default
+color header     brightmagenta default "^(Date)"
+color header     brightgreen   default "^(From)"
+color header     brightyellow  default "^(Subject)"
+
+# body
+color quoted     white       default
+color signature  brightwhite default
+color bold       brightwhite default
+color underline  white       default
+color normal     default     default
+color error      brightred   default
+color tilde      brightblack default
+color message    white       default
+color indicator  brightwhite blue
+color status     brightblue  default
+color tree       brightblue  default
+color attachment brightwhite default
+
+# indexes
+color index brightcyan default "~N" # new messages
+color index brightred  default "~D" # delete messages

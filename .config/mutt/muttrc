@@ -1,0 +1,49 @@
+set imap_check_subscribed # check for all subscribed IMAP folders
+set imap_keepalive = 300  # keep the IMAP connection alive by polling intermittently (time in seconds).
+set mail_check     = 120  # check for new mail (time in seconds).
+unset imap_passive        # allow mutt to open a new IMAP connection automatically.
+
+set editor = "vim"
+
+set mailcap_path = "~/.config/mutt/mailcap"
+auto_view text/html
+alternative_order text/plain text/html
+
+set sort     = threads
+set sort_aux = reverse-last-date-received
+
+set date_format  = "%b %d %H:%M"
+set index_format = "%Z  %d  %-30.30F  %-4.4c  %s"
+
+set header_cache     = "~/.cache/mutt/headers"
+set message_cachedir = "~/.cache/mutt/messages"
+
+# colorscheme
+source "~/.config/mutt/colors/defaults"
+
+# contacts
+set alias_file    = "~/.config/mutt/contacts"
+set sort_alias    = alias
+set reverse_alias = yes
+source $alias_file
+
+# keybindings
+macro index <F5> "<shell-escape>clear; $HOME/.local/bin/mailsync.sh<enter>" "sync messages in all accounts"
+macro index,pager <F2> "<change-folder>~/.local/share/mail/tommybuado@gmail.com/INBOX<enter>" "switch mailbox to tommybuado@gmail.com"
+macro index,pager <F3> "<change-folder>~/.local/share/mail/penncycount@gmail.com/INBOX<enter>" "switch mailbox to penncycount@gmail.com"
+macro index,pager c "<change-folder>?<change-dir><home>^K=<enter>" "change folder"
+macro index / "<enter-command>unset wait_key<enter><shell-escape>clear; read -p 'query: ' query; \
+	echo \$query > $HOME/.cache/mutt/query<enter><limit>~i \"\`notmuch search --output=messages \$(cat $HOME/.cache/mutt/query) | \
+	head -n 600 | perl -le '@a=<>;chomp@a;s/\^id:// for@a;$,=\"|\";print@a'\`\"<enter>" "show only messages based on query"
+macro index a "<limit>all\n" "show all messages"
+
+bind index G last-entry
+bind index g noop
+bind index gg first-entry
+
+# folder hooks
+folder-hook "~/.local/share/mail/tommybuado@gmail.com/" "source ~/.config/mutt/accounts/tommybuado@gmail.com"
+folder-hook "~/.local/share/mail/penncycount@gmail.com/" "source ~/.config/mutt/accounts/penncycount@gmail.com"
+
+# default account
+source "~/.config/mutt/accounts/tommybuado@gmail.com"
