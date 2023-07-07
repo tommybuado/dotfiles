@@ -1,6 +1,7 @@
 acct
 alpine-base
 alpine-sdk
+android-tools
 apparmor
 apparmor-profiles
 apparmor-utils
@@ -119,6 +120,7 @@ rsync
 rtkit
 rtorrent
 samba
+scrcpy
 scrot
 slock@apk-local
 slock-doc@apk-local
