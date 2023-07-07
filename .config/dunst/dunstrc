@@ -78,7 +78,7 @@ sort = yes
 # idle_threshold = 120
 
 # Text
-font = Noto Sans 12
+font = Roboto 12
 line_height = 0
 
 # Possible values are:
