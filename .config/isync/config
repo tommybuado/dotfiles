@@ -1,0 +1,101 @@
+# tommybuado@gmail.com
+IMAPAccount tommybuado@gmail.com
+Host imap.gmail.com
+User tommybuado@gmail.com
+PassCmd "awk 'NR==1 {print $1}' ~/.config/password.auth"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore tommybuado@gmail.com-remote
+Account tommybuado@gmail.com
+
+MaildirStore tommybuado@gmail.com-local
+SubFolders Verbatim
+Path ~/.local/share/mail/tommybuado@gmail.com/
+Inbox ~/.local/share/mail/tommybuado@gmail.com/INBOX
+
+Channel tommybuado@gmail.com-default
+Far :tommybuado@gmail.com-remote:
+Near :tommybuado@gmail.com-local:
+Patterns "INBOX"
+Create Both
+Expunge Both
+SyncState *
+
+Channel tommybuado@gmail.com-drafts
+Far :tommybuado@gmail.com-remote:"[Gmail]/Drafts"
+Near :tommybuado@gmail.com-local:Drafts
+Create Near
+Expunge Both
+SyncState *
+
+Channel tommybuado@gmail.com-sent
+Far :tommybuado@gmail.com-remote:"[Gmail]/Sent Mail"
+Near :tommybuado@gmail.com-local:Sent
+Create Near
+Expunge Both
+SyncState *
+
+Channel tommybuado@gmail.com-trash
+Far :tommybuado@gmail.com-remote:"[Gmail]/Trash"
+Near :tommybuado@gmail.com-local:Trash
+Create Near
+Expunge Both
+SyncState *
+
+Group tommybuado@gmail.com
+Channel tommybuado@gmail.com-default
+Channel tommybuado@gmail.com-drafts
+Channel tommybuado@gmail.com-sent
+Channel tommybuado@gmail.com-trash
+
+# penncycount@gmail.com
+IMAPAccount penncycount@gmail.com
+Host imap.gmail.com
+User penncycount@gmail.com
+PassCmd "awk 'NR==2 {print $1}' ~/.config/password.auth"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore penncycount@gmail.com-remote
+Account penncycount@gmail.com
+
+MaildirStore penncycount@gmail.com-local
+SubFolders Verbatim
+Path ~/.local/share/mail/penncycount@gmail.com/
+Inbox ~/.local/share/mail/penncycount@gmail.com/INBOX
+
+Channel penncycount@gmail.com-default
+Far :penncycount@gmail.com-remote:
+Near :penncycount@gmail.com-local:
+Patterns "INBOX"
+Create Both
+Expunge Both
+SyncState *
+
+Channel penncycount@gmail.com-drafts
+Far :penncycount@gmail.com-remote:"[Gmail]/Drafts"
+Near :penncycount@gmail.com-local:Drafts
+Create Near
+Expunge Both
+SyncState *
+
+Channel penncycount@gmail.com-sent
+Far :penncycount@gmail.com-remote:"[Gmail]/Sent Mail"
+Near :penncycount@gmail.com-local:Sent
+Create Near
+Expunge Both
+SyncState *
+
+Channel penncycount@gmail.com-trash
+Far :penncycount@gmail.com-remote:"[Gmail]/Trash"
+Near :penncycount@gmail.com-local:Trash
+Create Near
+Expunge Both
+SyncState *
+
+Group penncycount@gmail.com
+Channel penncycount@gmail.com-default
+Channel penncycount@gmail.com-drafts
+Channel penncycount@gmail.com-sent
+Channel penncycount@gmail.com-trash
