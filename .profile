@@ -6,6 +6,13 @@ export GOPATH="$HOME/.local/lib/go"
 export PATH="$GOPATH/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
+# notmuch
+export NOTMUCH_CONFIG="$HOME/.config/notmuch/config"
+
+# tasks
+export TASKDATA="$HOME/.local/share/task"
+export TASKRC="$HOME/.config/task/taskrc"
+
 # graphics
 export MESA_LOADER_DRIVER_OVERRIDE=iris
 
