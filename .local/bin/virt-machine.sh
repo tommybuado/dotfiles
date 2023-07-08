@@ -11,4 +11,4 @@ if [ "$?" -eq 0 ]; then
 	virsh start $VIRT_MACHINE
 fi
 
-remote-viewer --title "MS Windows 10 - Pro" spice://127.0.0.1:5900
+virt-viewer $VIRT_MACHINE
