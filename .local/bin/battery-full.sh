@@ -9,7 +9,7 @@ send_notification () {
 	if [ "$BAT0_STAT" = "Full" ] && [ "$BAT1_STAT" = "Full" ]; then
 		CAPACITY="$((($BAT0_CAPACITY + $BAT1_CAPACITY) / 2 ))"
 		if [ "$CAPACITY" -eq 100 ]; then
-			dunstify -i $HOME/.local/share/icons/dunst/battery-full.png \
+			dunstify -t 0 -i $HOME/.local/share/icons/dunst/battery-full.png \
 				-h string:x-dunst-stack-tag:battery-full "Battery Full!"
 		fi
 	fi
