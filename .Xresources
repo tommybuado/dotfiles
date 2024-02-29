@@ -1,3 +1,7 @@
+! cursor theme for X
+Xcursor.theme: Adwaita
+Xcursor.size:  24
+
 ! font settings
 Xft.antialias: 1
 Xft.rgba:      rgb
