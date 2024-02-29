@@ -1,0 +1,4 @@
+! font settings
+Xft.antialias: 1
+Xft.rgba:      rgb
+Xft.autohint:  1
