@@ -1,3 +1,6 @@
+# enable built-in vi command line editor
+set -o vi
+
 # shell prompt configuration and aliases
 [ -f "$HOME/.ashrc" ] && export ENV="$HOME/.ashrc"
 
