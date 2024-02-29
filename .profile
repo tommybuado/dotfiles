@@ -15,3 +15,8 @@ if [ -z "$XDG_RUNTIME_DIR" ]; then
 		mkdir -pm 0700 "$XDG_RUNTIME_DIR"
 	fi
 fi
+
+# run X11 after login automatically
+if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
+	exec startx -- vt1 &> /dev/null
+fi
