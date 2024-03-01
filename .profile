@@ -3,6 +3,8 @@ export GOPATH="$HOME/.local/lib/go"
 export PATH="$GOPATH/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
+export BROWSER="chromium-browser"
+
 # enable built-in vi command line editor
 set -o vi
 
