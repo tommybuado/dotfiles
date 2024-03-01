@@ -1,4 +1,5 @@
 #!/bin/sh
+feh --randomize --bg-scale $HOME/.local/share/wallpapers
 picom --config $HOME/.config/picom/picom.conf &
 redshift -c $HOME/.config/redshift/redshift.conf &
 
