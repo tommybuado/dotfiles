@@ -6,6 +6,9 @@ export PATH="$HOME/.local/bin:$PATH"
 export BROWSER="chromium-browser"
 export EDITOR="vim"
 
+# set default uri for libvirt
+export LIBVIRT_DEFAULT_URI="qemu:///system"
+
 # enable built-in vi command line editor
 set -o vi
 
