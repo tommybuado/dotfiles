@@ -1,0 +1,32 @@
+# font
+set font "monospace normal 11"
+
+# hide gui elements
+set guioptions none
+
+# statusbar
+set statusbar-h-padding 8
+set statusbar-v-padding 12
+
+set n-completion-items  0
+set show-recent         0
+
+# colorscheme
+set default-bg              "#101010"
+set default-fg              "#d0d0d0"
+set completion-bg           "#101010"
+set completion-fg           "#d0d0d0"
+set completion-highlight-bg "#101010"
+set completion-highlight-fg "#5f5fee"
+set inputbar-bg             "#101010"
+set inputbar-fg             "#d0d0d0"
+set statusbar-bg            "#101010"
+set statusbar-fg            "#d0d0d0"
+set notification-bg         "#101010"
+set notification-fg         "#5f5fee"
+set notification-error-bg   "#101010"
+set notification-error-fg   "#ff0090"
+set notification-warning-bg "#101010"
+set notification-warning-fg "#ffba68"
+set recolor-darkcolor       "#d0d0d0"
+set recolor-lightcolor      "#101010"
