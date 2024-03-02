@@ -1,0 +1,24 @@
+[global]
+workgroup = WORKGROUP
+server string = Alpine Samba Server
+server role = standalone server
+log file = /var/log/samba/%m.log
+max log size = 50
+dns proxy = no 
+
+[printers]
+comment = All Printers
+path = /usr/spool/samba
+browseable = no
+# Set public = yes to allow user 'guest account' to print
+guest ok = no
+writable = no
+printable = yes
+
+[office]
+comment = Office Files
+path = /home/tommy/Public/Office
+valid users = tommy
+public = no
+writable = yes
+printable = no
