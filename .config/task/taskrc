@@ -1,0 +1,9 @@
+# settings
+verbose = blank,footnote,label,new-id,affected,edit,special,project,sync,unwait
+
+# files
+hooks.location = /home/tommy/.config/task/hooks
+data.location  = /home/tommy/.local/share/task
+
+# news
+news.version = 2.6.0
