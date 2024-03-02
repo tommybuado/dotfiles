@@ -11,11 +11,29 @@ print_connection () {
 	fi
 }
 
+print_tasks_personal () {
+	TASKS="$(grep 'Personal*' ~/.local/share/task/pending.data | wc -l)"
+	echo "^c#bb88dd^^d^ $TASKS"
+}
+
+print_tasks_office () {
+	TASKS="$(grep 'OFFICE*' ~/.local/share/task/pending.data | wc -l)"
+	echo "^c#4eb4fa^^d^ $TASKS"
+}
+
+print_tasks_due () {
+	TASKS="$(grep 'due:*' ~/.local/share/task/pending.data | wc -l)"
+	echo "^c#ff0090^^d^ $TASKS"
+}
+
 print_date () {
 	echo "^c#bb88dd^^d^ $(date '+%a %b %d %I:%M %p')"
 }
 
 while true; do
-	xsetroot -name " $(print_connection)  $(print_date) "
+	STATUSES="$(print_connection)  $(print_tasks_personal)\
+		$(print_tasks_office)  $(print_tasks_due)  $(print_date)"
+
+	xsetroot -name " $STATUSES "
 	sleep 1s
 done
