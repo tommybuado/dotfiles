@@ -1,0 +1,4 @@
+# battery charging
+KERNEL=="AC" SUBSYSTEM=="power_supply", ATTR{online}=="1", ENV{DISPLAY}=":0", \
+	ENV{XAUTHORITY}="/home/tommy/.Xauthority", \
+	RUN+="/bin/su tommy -c /home/tommy/.local/bin/battery-charging.sh"
