@@ -1,0 +1,13 @@
+#!/bin/sh
+KERNEL_FLAVOR=$1
+
+if [ "$KERNEL_FLAVOR" = "lts" ]; then
+	efibootmgr | grep Boot0000 > /dev/null
+	if [ "$?" -eq 0 ]; then
+		efibootmgr -b 0000 -B -q
+	fi
+
+	efibootmgr -b 0000 -c -d /dev/sda -p 1 \
+		-L "ThinkPad x260 [Fallback]" \
+		-l "\EFI\alpine\grubx64.efi" -q
+fi

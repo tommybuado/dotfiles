@@ -1,0 +1,24 @@
+#!/bin/sh
+KERNEL_CMDLINE_LINUX_DEFAULT="modules=sd-mod,usb-storage,btrfs quiet \
+rootfstype=btrfs root=UUID=f819eba5-8db0-4677-9cfe-49b29e96694c \
+rootflags=rw,subvolid=256,subvol=root apparmor=1 security=apparmor \
+console=tty1 console=tty6 initrd=\EFI\alpine\initramfs-lts \
+initrd=\EFI\alpine\intel-ucode.img"
+
+KERNEL_FLAVOR=$1
+
+if [ "$KERNEL_FLAVOR" = "lts" ]; then
+	cp -pr /boot/initramfs-lts /boot/efi/EFI/alpine/initramfs-lts
+	cp -pr /boot/vmlinuz-lts /boot/efi/EFI/alpine/vmlinuz-lts
+	cp -pr /boot/intel-ucode.img /boot/efi/EFI/alpine/intel-ucode.img
+
+	efibootmgr | grep Boot0001 > /dev/null
+	if [ "$?" -eq 0 ]; then
+		efibootmgr -b 0001 -B -q
+	fi
+
+	efibootmgr -b 0001 -c -d /dev/sda -p 1 \
+		-L "ThinkPad x260 [Alpine Linux]" \
+		-l "\EFI\alpine\vmlinuz-lts" \
+		-u "$KERNEL_CMDLINE_LINUX_DEFAULT" -q
+fi
