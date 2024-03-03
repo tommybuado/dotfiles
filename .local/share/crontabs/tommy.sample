@@ -1,0 +1,4 @@
+# min   hour    day     month   weekday command
+*/15    *       *       *       *       DISPLAY=:0 /usr/bin/feh --randomize --bg-scale $HOME/.local/share/wallpapers
+*       *       *       *       *       DISPLAY=:0 $HOME/.local/bin/battery-full.sh
+*       *       *       *       *       DISPLAY=:0 $HOME/.local/bin/battery-low.sh
