@@ -1,4 +1,4 @@
 # adapter unplugged
 KERNEL=="AC" SUBSYSTEM=="power_supply", ATTR{online}=="0", ENV{DISPLAY}=":0", \
 	ENV{XAUTHORITY}="/home/tommy/.Xauthority", \
-	RUN+="/bin/su tommy -c /home/tommy/.local/bin/adapter-unplugged.sh"
+	RUN+="/bin/su tommy -c /home/tommy/.local/bin/battery-discharging.sh"
