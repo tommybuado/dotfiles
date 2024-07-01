@@ -1,0 +1,18 @@
+if [ "$(id -u)" -eq 1000 ]; then
+	export PS1="\[\e[1;34m\]\u\[\e[1;37m\]@\H \[\e[1;32m\]\W \[\e[1;33m\]\$(git_ps1_prompt)\[\e[1;37m\]$ \[\e[0m\]"
+	git_ps1_prompt () {
+		git branch 2> /dev/null | sed -e "/^[^*]/d" -e "s/* \(.*\)/(\1) /"
+	}
+else
+	export PS1="\[\e[1;31m\]\u\[\e[1;37m\]@\H \[\e[1;32m\]\W \[\e[1;31m\]# \[\e[0m\]"
+fi
+
+alias cp="cp -i"
+alias mv="mv -i"
+alias rm="rm -i"
+
+alias la="ls -a"
+alias ll="ls -l"
+alias lh="ls -lh"
+
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
