@@ -5,6 +5,8 @@ export GOPATH="$HOME/.local/lib/go"
 export PATH="$GOPATH/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
+export LIBVIRT_DEFAULT_URI="qemu:///system"
+
 [ -f "$HOME/.ashrc" ] && export ENV="$HOME/.ashrc"
 
 if [ -z "$XDG_RUNTIME_DIR" ]; then
