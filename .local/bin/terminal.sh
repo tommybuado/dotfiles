@@ -1,7 +1,7 @@
 #!/bin/sh
 DEFAULT_SESSION="$(echo $HOSTNAME | sed -e 's/\./\_/g')"
 
-tmux has-session -t $DEFAULT_SESSION > /dev/null
+tmux has-session -t $DEFAULT_SESSION 2> /dev/null
 if [ "$?" -ne 0 ]; then
 	tmux new-session -s $DEFAULT_SESSION -d
 fi

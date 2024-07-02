@@ -7,7 +7,7 @@ PROJECT="$(find $PROJECTS_DIR/$WORKSPACE -type d -maxdepth 1 -mindepth 1 | cut -
 PROJECT_DIR="$HOME/Desktop/Projects/$WORKSPACE/$PROJECT"
 PROJECT_SESSION="$(echo $PROJECT | sed -e 's/\./\_/g')"
 
-tmux has-session -t $PROJECT_SESSION > /dev/null
+tmux has-session -t $PROJECT_SESSION 2> /dev/null
 if [ "$?" -ne 0 ]; then
 	tmux new-session -s $PROJECT_SESSION -c $PROJECT_DIR -d
 fi
