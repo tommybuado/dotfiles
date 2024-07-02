@@ -6,7 +6,7 @@ if [ "$?" -ne 0 ]; then
 	tmux new-session -s $DEFAULT_SESSION -d
 fi
 
-pidof -s /usr/bin/st > /dev/null
+pgrep -x st > /dev/null
 if [ "$?" -eq 0 ]; then
 	tmux switch-client -t $DEFAULT_SESSION
 	xdo activate -n "st-256color"
